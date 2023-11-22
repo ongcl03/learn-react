@@ -21,6 +21,10 @@ function App() {
       <h1 style={{color: isGreen? "green" : "red"}}> This has color </h1>
 
 
+      {/* Using logical && for if statement without else branch */}
+      {/* If the green is true, show the button, else do nothing, really useful*/}
+      {isGreen && <button>This is a button</button>}
+
 
     </div>
   );
