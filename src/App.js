@@ -4,25 +4,21 @@ function App() {
 
   return (
     <div className="App"> 
-      {/* This is a JSX comment */}
-      {/* So using props we can pass in different data for creating same compoenent but with different value/data */}
-      <User name="cl" age={20} email="cl@gmail.com" />
-      <User name="second" age={21} email="second@gmail.com" />
+      <Job salary={90000} position="Senior SDE" company="Amazon" />
+      <Job salary={12000} position="Junior SDE" company="Google" />
+      <Job salary={10000} position="Project Manager" company="Netflix" />
     </div>
   );
 }
 
-// component
-// props is like data we can pass in into this components
-const User = (props) => {
+const Job = (props) => {
   return (
     <div>
-      <h1>{props.name}</h1>
-      <h2>{props.age}</h2>
-      <h2>{props.email}</h2>
+      <h1>{props.salary}</h1>
+      <h1>{props.position}</h1>
+      <h1>{props.company}</h1>
     </div>
   );
 }
-
 
 export default App;
