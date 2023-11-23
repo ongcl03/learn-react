@@ -18,13 +18,17 @@ function App() {
     setTodoList([...todoList, newTask]);
   }
 
+  function deleteTask(taskName) {
+    // Using filter to filter out the task
+    setTodoList(todoList.filter(task => task !== taskName));
+  }
 
 
   return (
-    <div className="App"> 
-    
+    <div className="App">
+
       <div className="addTask">
-        <input onChange={handleChange}/>
+        <input onChange={handleChange} />
         <button onClick={addTask}>Add Task</button>
       </div>
 
@@ -32,9 +36,14 @@ function App() {
 
       <div className="list">
         {todoList.map((task) => {
-          return <h1>{task}</h1>
+          return (
+            <div>
+              <h1>{task}</h1>
+              <button onClick={() => deleteTask(task)}> X </button>
+            </div>
+          ) 
         })}
-    
+
       </div>
 
 
