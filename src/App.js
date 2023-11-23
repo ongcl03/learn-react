@@ -19,7 +19,8 @@ function App() {
     // Now toDoList is an array of object
     const task = {
       id: todoList.length === 0 ? 1 : todoList[todoList.length - 1].id + 1,
-      taskName: newTask
+      taskName: newTask,
+      isCompleted: false
     };
 
     setTodoList([...todoList, task]);
@@ -28,6 +29,19 @@ function App() {
   function deleteTask(taskId) {
     // Now we will filter the id (better way when using id)
     setTodoList(todoList.filter(task => task.id !== taskId));
+  }
+
+
+  function completeTask(taskId) {
+    setTodoList(
+      todoList.map((task) => {
+        if (task.id === taskId){
+          return {...task, isCompleted: true}
+        } else {
+          return task;
+        }
+      })
+    );
   }
 
 
@@ -44,7 +58,7 @@ function App() {
         {/* Pass values into componenet include passing functions */}
 
         {todoList.map((task) => {
-          return <Task taskName={task.taskName} id={task.id} deleteTask={deleteTask}/>
+          return <Task taskName={task.taskName} id={task.id} deleteTask={deleteTask} completeTask={completeTask} isCompleted={task.isCompleted}/>
         })}
 
       </div>
