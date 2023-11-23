@@ -6,31 +6,36 @@ import { useState } from 'react';
 
 function App() {
 
-  const [count, setCount] = useState(0);
+  const [todoList, setTodoList] = useState([]);
+  const [newTask, setNewTask] = useState('');
 
-  const increaseCount = () => {
-    setCount(count + 1);
+  function handleChange(event) {
+    setNewTask(event.target.value)
   }
 
-  const decreaseCount = () => {
-    setCount(count - 1);
-  }
-
-  const setToZero = () => {
-    setCount(0);
+  function addTask() {
+    // Using spread operator instead of push, cuz must be pure
+    setTodoList([...todoList, newTask]);
   }
 
 
 
   return (
     <div className="App"> 
+    
+      <div className="addTask">
+        <input onChange={handleChange}/>
+        <button onClick={addTask}>Add Task</button>
+      </div>
 
-      <button onClick={increaseCount}>Increase</button>
-      <button onClick={decreaseCount}>Decrease</button>
-      <button onClick={setToZero}>Set to zero</button>
 
-      {count}
 
+      <div className="list">
+        {todoList.map((task) => {
+          return <h1>{task}</h1>
+        })}
+    
+      </div>
 
 
     </div>
