@@ -6,23 +6,31 @@ import { useState } from 'react';
 
 function App() {
 
-  const [textColor, setTextColor] = useState("black");
+  const [count, setCount] = useState(0);
+
+  const increaseCount = () => {
+    setCount(count + 1);
+  }
+
+  const decreaseCount = () => {
+    setCount(count - 1);
+  }
+
+  const setToZero = () => {
+    setCount(0);
+  }
+
+
 
   return (
     <div className="App"> 
 
-      {/* toggle textColor with tenary operator */}
-      <button onClick={() => {
-        setTextColor(textColor === "black" ? "red" : "black");
-      }}>
-        Change Color
-      </button>
+      <button onClick={increaseCount}>Increase</button>
+      <button onClick={decreaseCount}>Decrease</button>
+      <button onClick={setToZero}>Set to zero</button>
 
-      
-      {/* using style */}
-      <h1 style={{
-        color: textColor
-      }}>Hi how are you</h1>
+      {count}
+
 
 
     </div>
