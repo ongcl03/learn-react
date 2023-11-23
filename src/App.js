@@ -14,13 +14,19 @@ function App() {
   }
 
   function addTask() {
-    // Using spread operator instead of push, cuz must be pure
-    setTodoList([...todoList, newTask]);
+
+    // Now toDoList is an array of object
+    const task = {
+      id: todoList.length === 0 ? 1 : todoList[todoList.length - 1].id + 1,
+      taskName: newTask
+    };
+
+    setTodoList([...todoList, task]);
   }
 
-  function deleteTask(taskName) {
-    // Using filter to filter out the task
-    setTodoList(todoList.filter(task => task !== taskName));
+  function deleteTask(taskId) {
+    // Now we will filter the id (better way when using id)
+    setTodoList(todoList.filter(task => task.id !== taskId));
   }
 
 
@@ -37,9 +43,9 @@ function App() {
       <div className="list">
         {todoList.map((task) => {
           return (
-            <div>
-              <h1>{task}</h1>
-              <button onClick={() => deleteTask(task)}> X </button>
+            <div className='task-container'>
+              <h1 className='task'>{task.taskName}</h1>
+              <button onClick={() => deleteTask(task.id)}> X </button>
             </div>
           ) 
         })}
