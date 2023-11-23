@@ -6,16 +6,23 @@ import { useState } from 'react';
 
 function App() {
 
-  const [showText, setShowText] = useState(true);
+  const [textColor, setTextColor] = useState("black");
 
   return (
     <div className="App"> 
-      <button onClick={() => setShowText(!showText)}>
-        Show/Hide
+
+      {/* toggle textColor with tenary operator */}
+      <button onClick={() => {
+        setTextColor(textColor === "black" ? "red" : "black");
+      }}>
+        Change Color
       </button>
 
-      {/* if showText = true, show the how are you text */}
-      {showText && <h1>Hi how are you</h1>}
+      
+      {/* using style */}
+      <h1 style={{
+        color: textColor
+      }}>Hi how are you</h1>
 
 
     </div>
