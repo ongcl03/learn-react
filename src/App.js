@@ -1,5 +1,6 @@
 import './App.css';
 import { useState } from 'react';
+import { Task } from './Task.js'
 
 
 
@@ -38,16 +39,12 @@ function App() {
         <button onClick={addTask}>Add Task</button>
       </div>
 
-
-
       <div className="list">
+
+        {/* Pass values into componenet include passing functions */}
+
         {todoList.map((task) => {
-          return (
-            <div className='task-container'>
-              <h1 className='task'>{task.taskName}</h1>
-              <button onClick={() => deleteTask(task.id)}> X </button>
-            </div>
-          ) 
+          return <Task taskName={task.taskName} id={task.id} deleteTask={deleteTask}/>
         })}
 
       </div>
