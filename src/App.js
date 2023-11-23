@@ -6,22 +6,19 @@ import {Planet} from './Planet'
 
 function App() {
 
-  const planets = [
-    { name: "Mars", isGasPlanet: false },
-    { name: "Earth", isGasPlanet: false },
-    { name: "Jupiter", isGasPlanet: true },
-    { name: "Venus", isGasPlanet: false },
-    { name: "Neptune", isGasPlanet: true },
-    { name: "Uranus", isGasPlanet: true }
-  ];
+  function handleClick() {
+    alert('You clicked me');
+  }
 
 
   return (
     <div className="App"> 
-      
-      {planets.map((planet, key) => {
-        return <Planet name={planet.name} isGasPlanet={planet.isGasPlanet}/>
-      })}
+
+      {/* button onClick  */}
+      <button onClick={handleClick}>
+        Click me
+      </button>
+
 
     </div>
   );
