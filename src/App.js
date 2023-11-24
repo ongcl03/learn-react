@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect  } from 'react';
 import { Task } from './Task.js'
 
 
@@ -9,6 +9,17 @@ function App() {
 
   const [todoList, setTodoList] = useState([]);
   const [newTask, setNewTask] = useState('');
+
+
+  useEffect(() => {
+    console.log("Component mounted");
+
+    return () => {
+      console.log("Component Unmounted");
+    }
+  }, [])
+
+
 
   function handleChange(event) {
     setNewTask(event.target.value)
