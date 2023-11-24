@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Home } from "./pages/Home";
 import { Menu } from "./pages/Menu";
 import { Contact } from "./pages/Contact";
+import { Navbar } from './Navbar';
 
 
 function App() {
@@ -11,11 +12,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <div>
-          <Link to="/"> Home </Link>
-          <Link to="/Menu"> Menu </Link>
-          <Link to="/Contact"> Contact </Link>
-        </div>
+        <Navbar />
 
         <Routes>
           <Route path="/" element={<Home />}/>
