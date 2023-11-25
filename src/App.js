@@ -4,21 +4,23 @@ import { Home } from "./pages/Home";
 import { Profile } from "./pages/Profile";
 import { Contact } from "./pages/Contact";
 import { Navbar } from "./Navbar";
-import { useState, createContext } from "react";
-
-// create context
-export const AppContext = createContext();
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
-  const [username, setUsername] = useState("Ong");
+  const client = new QueryClient({
+    // set the configurations we want
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+      },
+    },
+  });
 
   return (
     <div className="App">
-      {/* Using .Provider because it will provide value */}
-      <AppContext.Provider value={{ username, setUsername }}>
+      <QueryClientProvider client={client}>
         <Router>
           <Navbar />
-
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
@@ -26,7 +28,7 @@ function App() {
             <Route path="*" element={<h1>Page not found</h1>} />
           </Routes>
         </Router>
-      </AppContext.Provider>
+      </QueryClientProvider>
     </div>
   );
 }
